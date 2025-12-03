@@ -1,0 +1,15 @@
+name: zaw-portfolio
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.12
+  - nodejs=18.18.2      # Latest Windows-supported build on conda-forge
+  - git
+
+  - pip
+  - pip:
+      - virtualenv
+      - autopep8
+      - black
