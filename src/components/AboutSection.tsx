@@ -2,12 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 const skills = [
-  { name: "C++", icon: "/assets/icon-cpp.png" },
-  { name: "Python", icon: "/assets/icon-python.png" },
+  { name: "C++", icon: "/assets/cpp_icon.png" },
+  { name: "Python", icon: "/assets/python_icon.png" },
   { name: "ROS2", icon: "/assets/icon-ros2.jpg" },
-  { name: "CAD", icon: "🔧", emoji: true },
-  { name: "SLAM", icon: "📡", emoji: true },
-  { name: "Gazebo", icon: "🎮", emoji: true },
+  { name: "CAD", icon: "/assets/cad_icon.jpg" },
+  { name: "SLAM", icon: "/assets/_icon.jpg" },
+  { name: "Gazebo", icon: "/assets/gazebo_icon.jpg" },
   { name: "AI/ML", icon: "🤖", emoji: true },
   { name: "Computer Vision", icon: "👁️", emoji: true },
   { name: "FEA", icon: "📊", emoji: true },
@@ -17,21 +17,7 @@ const skills = [
 ];
 
 export default function AboutSection() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
-      const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
-      setMousePosition({ x: x * 20, y: y * 20 });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   return (
     <section
@@ -59,52 +45,29 @@ export default function AboutSection() {
         </svg>
       </div>
 
-      <div className="container relative z-10">
+      <div className="container relative z-10 min-h-[calc(100svh-10rem)] flex flex-col justify-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <h2 className="text-5xl font-bold mb-4 text-glow">About Me</h2>
           <div className="w-24 h-1 bg-primary mx-auto glow-effect" />
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Portrait and Bio */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="space-y-6"
+            className="flex items-center"
           >
-            {/* Portrait with parallax */}
-            <motion.div
-              className="relative w-full max-w-md mx-auto"
-              style={{
-                transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
-                transition: "transform 0.1s ease-out",
-              }}
-            >
-              <div className="mechanical-border p-2 bg-card/50 backdrop-blur-sm">
-                <img
-                  src="/assets/portrait.png"
-                  alt="Zaw Hein Aung"
-                  className="w-full h-auto"
-                />
-              </div>
-              
-              {/* Corner decorations */}
-              <div className="absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-primary" />
-              <div className="absolute -top-4 -right-4 w-8 h-8 border-t-2 border-r-2 border-primary" />
-              <div className="absolute -bottom-4 -left-4 w-8 h-8 border-b-2 border-l-2 border-primary" />
-              <div className="absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-primary" />
-            </motion.div>
-
             {/* Biography */}
-            <div className="mechanical-border p-6 bg-card/30 backdrop-blur-sm space-y-4">
+            <div className="mechanical-border p-6 bg-card/30 backdrop-blur-sm space-y-4 w-full max-w-xl mx-auto">
               <p className="text-muted-foreground leading-relaxed">
                 I am a <span className="text-foreground font-semibold">Robotics Engineer</span> with 
                 expertise spanning mechanical design, autonomous systems, and AI integration. My work 
