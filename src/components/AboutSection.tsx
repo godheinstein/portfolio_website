@@ -2,18 +2,19 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 const skills = [
-  { name: "C++", icon: "/assets/cpp_icon.png" },
-  { name: "Python", icon: "/assets/python_icon.png" },
-  { name: "ROS2", icon: "/assets/icon-ros2.jpg" },
-  { name: "CAD", icon: "/assets/cad_icon.jpg" },
-  { name: "SLAM", icon: "/assets/_icon.jpg" },
-  { name: "Gazebo", icon: "/assets/gazebo_icon.jpg" },
-  { name: "AI/ML", icon: "🤖", emoji: true },
-  { name: "Computer Vision", icon: "👁️", emoji: true },
-  { name: "FEA", icon: "📊", emoji: true },
-  { name: "SolidWorks", icon: "⚙️", emoji: true },
-  { name: "Navigation", icon: "🧭", emoji: true },
-  { name: "Sensors", icon: "📟", emoji: true },
+  { name: "Python", icon: "/assets/python_icon.svg" },
+  { name: "C++", icon: "/assets/cpp_icon.svg" },
+  { name: "ROS2", icon: "/assets/ros_icon.svg" },
+  { name: "SLAM", icon: "/assets/slam_icon.svg" },
+  { name: "Gazebo", icon: "/assets/gazebo_icon.svg" },
+  { name: "AI/ML", icon: "/assets/AI_icon.svg" },
+  { name: "Computer Vision", icon: "/assets/cv_icon.svg" },
+  { name: "Mobile Manipulation", icon: "/assets/mm_icon.svg" },
+  { name: "Path Planning", icon: "/assets/path_icon.svg" },
+  { name: "Sensor Fusion", icon: "/assets/sensor_icon.svg" },
+  { name: "CAD/Solidworks", icon: "/assets/cad_icon.svg" },
+  { name: "FEA", icon: "/assets/fea_icon.svg" },
+
 ];
 
 export default function AboutSection() {
@@ -68,17 +69,17 @@ export default function AboutSection() {
           >
             {/* Biography */}
             <div className="mechanical-border p-6 bg-card/30 backdrop-blur-sm space-y-4 w-full max-w-xl mx-auto">
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
                 I am a <span className="text-foreground font-semibold">Robotics Engineer</span> with 
                 expertise spanning mechanical design, autonomous systems, and AI integration. My work 
                 bridges the gap between theoretical robotics and real-world applications.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
                 With experience at leading companies like <span className="text-foreground font-semibold">Dyson</span>, 
                 I've developed cutting-edge solutions in <span className="text-foreground font-semibold">3D SLAM</span>, 
                 sensor fusion, and autonomous navigation systems that operate in challenging environments.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
                 I combine <span className="text-foreground font-semibold">CAD engineering precision</span> with 
                 advanced software development to create robust, scalable robotic systems that push the boundaries 
                 of what's possible in automation and AI.
@@ -111,28 +112,40 @@ export default function AboutSection() {
                   whileHover={{ scale: 1.1, y: -5 }}
                   className="relative group"
                 >
-                  <div className="mechanical-border p-4 bg-card/50 backdrop-blur-sm aspect-square flex flex-col items-center justify-center gap-2 cursor-pointer overflow-hidden">
-                    {/* Icon */}
-                    {skill.emoji ? (
-                      <span className="text-4xl group-hover:scale-110 transition-transform">
-                        {skill.icon}
-                      </span>
-                    ) : (
-                      <img
-                        src={skill.icon}
-                        alt={skill.name}
-                        className="w-12 h-12 object-contain group-hover:scale-110 transition-transform"
-                      />
-                    )}
+                <div className="mechanical-border p-3 bg-white/10 backdrop-blur-md aspect-square
+                                flex flex-col items-center justify-center gap-2
+                                cursor-pointer overflow-hidden">
+                {/* Icon */}
+                {skill ? (
+                  <div className="relative flex items-center justify-center">
+                    <div className="absolute inset-0 rounded-lg bg-white/20 blur-md opacity-70" />
+                    <img
+                      src={skill.icon}
+                      alt={skill.name}
+                      className="relative w-14 h-14 object-contain transition-transform
+                                group-hover:scale-110 group-hover:brightness-110 group-hover:contrast-125"
+                    />
+                  </div>
+                ) : (
+                  <div className="relative flex items-center justify-center">
+                    <div className="absolute inset-0 rounded-lg bg-white/25 blur-md opacity-80" />
+                    <img
+
+                      className="relative w-12 h-12 object-contain transition-transform
+                                group-hover:scale-110 group-hover:brightness-110 group-hover:contrast-125"
+                    />
+                  </div>
+                )}
+
                     
                     {/* Name */}
-                    <span className="text-xs font-medium text-center">{skill.name}</span>
+                    <span className="text-sm sm:text-base font-semibold text-center text-foreground/100">{skill.name}</span>
 
                     {/* Hover overlay */}
                     <motion.div
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 1 }}
-                      className="absolute inset-0 bg-primary/20 backdrop-blur-sm flex items-center justify-center"
+                      className="absolute inset-0 bg-primary/20 backdrop-blur-md flex items-center justify-center"
                     >
                       <div className="w-full h-full border-2 border-primary/50 glow-effect" />
                     </motion.div>

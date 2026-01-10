@@ -12,7 +12,9 @@ const experiences = [
       "Integrated 2-in-1 SLAM + object detection",
       "Built 2D semantic segmentation (81.7% mIoU)",
     ],
-    icons: ["🤖", "📡", "🎯"],
+    icons: ["/assets/icon-robot.svg",
+  "/assets/icon-lidar.svg",
+  "/assets/icon-target.svg"],
   },
   {
     company: "ApoSys Technologies",
