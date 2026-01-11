@@ -118,7 +118,7 @@ export default function AboutSection() {
                 {/* Icon */}
                 {skill ? (
                   <div className="relative flex items-center justify-center">
-                    <div className="absolute inset-0 rounded-lg bg-white/20 blur-md opacity-70" />
+                    <div className="absolute inset-0 rounded-lg bg-white/45 blur-md opacity-70" />
                     <img
                       src={skill.icon}
                       alt={skill.name}
@@ -128,7 +128,7 @@ export default function AboutSection() {
                   </div>
                 ) : (
                   <div className="relative flex items-center justify-center">
-                    <div className="absolute inset-0 rounded-lg bg-white/25 blur-md opacity-80" />
+                    <div className="absolute inset-0 rounded-lg bg-white/45 blur-md opacity-80" />
                     <img
 
                       className="relative w-12 h-12 object-contain transition-transform
