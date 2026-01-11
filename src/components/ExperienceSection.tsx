@@ -4,40 +4,40 @@ const experiences = [
   {
     company: "Dyson",
     role: "Robotics Intern",
-    period: "2023 - 2024",
+    location: "Singapore",
+    period: "Jan 2025 - May 2025",
     highlights: [
-      "Developed new docking prototype with NX CAD, Arduino, embedded systems",
-      "LiDAR ground truth benchmarking with ROS2 + SLAM",
-      "Digital twin simulation in Gazebo",
-      "Integrated 2-in-1 SLAM + object detection",
-      "Built 2D semantic segmentation (81.7% mIoU)",
+      "Delivered a new robotic vacuum docking system in 5 months using NX CAD, embedded systems, and rapid prototyping",
+      "Built a ROS 2 LiDAR ground-truth benchmarking system and Gazebo digital twin, cutting testing and development time by 2×.",
+      "Developed SLAM, object detection, and semantic segmentation pipelines, achieving 81.7% mIoU and improved localization accuracy via ground-truth validation.",
     ],
-    icons: ["/assets/icon-robot.svg",
-  "/assets/icon-lidar.svg",
-  "/assets/icon-target.svg"],
+
+    icons: ["/assets/dyson_icon.svg"],
   },
   {
     company: "ApoSys Technologies",
     role: "Robotics & Mechanical Engineering Intern",
-    period: "2022 - 2023",
+    location: "Toronto, Canada",
+    period: "Aug 2023 - Jul 2024",
     highlights: [
-      "Autonomous Railway Testing Unit (ARTU)",
-      "Heating Control System with 80% cost reduction (FEA thermal simulations)",
+      "Designed an autonomous railway inspection robot for AI predictive maintenance, reducing manual labor by 68%.",
+      "Engineered an energy-efficient heating system using FEA and CAD, achieving an 80% cost reduction for winter operation.",
       "Underground GPS: ROS2 + 3D SLAM + pose graph optimization",
-      "Achieved 95% accuracy in GNSS-denied mining tunnels",
+      "Built an underground positioning system with ROS 2, 3D SLAM, and IMU–LiDAR fusion, achieving 95% accuracy and reducing safety risk by 3×.",
     ],
-    icons: ["🚂", "🔥", "📍"],
+    icons: ["/assets/aposys_icon.svg"],
   },
   {
     company: "KABAM Robotics",
     role: "Robotics & Design Engineering Intern",
-    period: "2021 - 2022",
+    location: "Singapore",
+    period: "Jan 2021 - Jun 2021",
     highlights: [
-      "Created autonomous robotic systems",
-      "Managed 6 CAD projects, designed robot brackets",
-      "Built outdoor AMR robots from design → assembly → deployment",
+      "Developed and deployed industrial autonomous robots, improving fabrication efficiency by 55%.",
+      "Led 6 CAD projects (SolidWorks, Onshape), designing mechanical components and assembling a full outdoor robot.",
+      "Supported end-to-end deployment of 5 robots, reducing system errors by 17%.",
     ],
-    icons: ["🔧", "📐", "🚀"],
+    icons: ["/assets/kabam_icon.svg"],
   },
 ];
 
@@ -96,15 +96,23 @@ export default function ExperienceSection() {
                     </div>
                     <div className="flex gap-2">
                       {exp.icons.map((icon, i) => (
-                        <motion.span
+                        <motion.div
                           key={i}
-                          className="text-2xl"
-                          whileHover={{ scale: 1.2, rotate: 360 }}
+                          whileHover={{ scale: 1.15, rotate: 10 }}
                           transition={{ duration: 0.3 }}
+                          className="relative w-20 h-20"
                         >
-                          {icon}
-                        </motion.span>
+                          {/* subtle backing for contrast */}
+                          <div className="absolute inset-0 rounded-3xl bg-white/30 blur-sm" />
+
+                          <img
+                            src={icon}
+                            alt=""
+                            className="relative w-20 h-20 object-contain"
+                          />
+                        </motion.div>
                       ))}
+
                     </div>
                   </div>
 
