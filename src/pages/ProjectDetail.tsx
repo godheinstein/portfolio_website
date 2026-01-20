@@ -17,39 +17,27 @@ const projects = [
     ],
   },
   {
-    title: "Heating Control System",
-    description: "FEA thermal simulation, modular engineering with 80% cost reduction",
-    tech: ["FEA", "Thermal Analysis", "CAD", "Optimization"],
-    image: "/assets/project-heating.png",
-    slug: "heating-control-system",
-    link: "#",
-    highlights: [
-      "Thermal/FEA-driven design iteration to meet harsh environment constraints.",
-      "Modular architecture leading to 80% cost reduction.",
-    ],
-  },
-  {
-    title: "ARTU",
-    description: "Autonomous testing & calibration system for railway infrastructure",
-    tech: ["Autonomous Systems", "Sensors", "Testing"],
+    title: "ATMU",
+    description: "Autonomous track measurement unit for railway infrastructure",
+    tech: ["Autonomous Systems", "Sensor Fusion", "Predictive Maintenance"],
     image: "/assets/project-artu.png",
-    slug: "artu-autonomous-testing-unit",
+    slug: "artu-track-measurement-unit",
     link: "#",
     highlights: [
-      "Autonomous calibration/testing workflows for repeatable field operations.",
+      "AI predictive maintenance of railway track defects and sub-surface LiDAR scanning.",
       "Sensor-based diagnostics to support reliable infrastructure validation.",
     ],
   },
-  {
-    title: "Onyx Home Robot Assistant",
-    description: "SolidWorks competition runner-up, advanced home robotics design",
-    tech: ["SolidWorks", "CAD", "Product Design"],
-    image: "/assets/project-onyx.png",
-    slug: "onyx-home-robot-assistant",
+    {
+    title: "KABAM Robotics AMRs",
+    description: "AI-driven AMRs for Security Surveillance and Patrol",
+    tech: ["CAD", "Design for Manufacturing", "Rapid Prototyping", "Robotics"],
+    image: "/assets/project-stablehr.png",
+    slug: "kabam-robotics-amrs",
     link: "#",
     highlights: [
-      "Competition runner-up design with focus on real home use-cases.",
-      "End-to-end CAD and product design workflow in SolidWorks.",
+      "Built and deployed MVP AMRs with custom sensor mounts and payload integration",
+      "Led 6+ CAD projects covering design, prototyping, and deployment-ready hardware",
     ],
   },
   {
@@ -74,18 +62,6 @@ const projects = [
     highlights: [
       "Multi-agent pipeline design using CrewAI for topic→draft→review flows.",
       "Asynchronous execution to improve throughput and automation.",
-    ],
-  },
-  {
-    title: "StableHR",
-    description: "ETHGlobal Web3 app with wallet integration and Web3Storage",
-    tech: ["Web3", "Ethereum", "Blockchain", "React"],
-    image: "/assets/project-stablehr.png",
-    slug: "stablehr-web3-app",
-    link: "#",
-    highlights: [
-      "ETHGlobal project with wallet integration and decentralized storage.",
-      "Front-end built in React with Web3Storage integration.",
     ],
   },
   {
@@ -134,6 +110,30 @@ const projects = [
     highlights: [
       "Multi-sensor fusion (IMU, sonar, GPS, barometer) for robust estimation.",
       "Filter tuning for stability and performance under noisy measurements.",
+    ],
+  },
+{
+    title: "Onyx Home Robot Assistant",
+    description: "SolidWorks competition runner-up, advanced home robotics design",
+    tech: ["SolidWorks", "CAD", "Product Design"],
+    image: "/assets/project-onyx.png",
+    slug: "onyx-home-robot-assistant",
+    link: "#",
+    highlights: [
+      "Competition runner-up design with focus on real home use-cases.",
+      "End-to-end CAD and product design workflow in SolidWorks.",
+    ],
+  },
+{
+    title: "StableHR",
+    description: "ETHGlobal Web3 app with wallet integration and Web3Storage",
+    tech: ["Web3", "Ethereum", "Blockchain", "React"],
+    image: "/assets/project-stablehr.png",
+    slug: "stablehr-web3-app",
+    link: "#",
+    highlights: [
+      "ETHGlobal project with wallet integration and decentralized storage.",
+      "Front-end built in React with Web3Storage integration.",
     ],
   },
 ];
