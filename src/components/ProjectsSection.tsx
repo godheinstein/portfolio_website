@@ -13,11 +13,11 @@ const projects = [
     link: "#",
   },
   {
-    title: "ARTU",
+    title: "Autonomous Track Measurement Unit (ATMU)",
     description: "Autonomous track measurement unit for railway infrastructure",
     tech: ["Autonomous Systems", "Sensor Fusion", "Predictive Maintenance"],
     image: "/assets/project-artu.png",
-    slug: "artu-track-measurement-unit",
+    slug: "atmu-track-measurement-unit",
     link: "#",
   },
   {
@@ -86,8 +86,8 @@ const projects = [
   },
   {
     title: "StableHR",
-    description: "ETHGlobal Web3 app with wallet integration and Web3Storage",
-    tech: ["Web3", "Ethereum", "Blockchain", "React"],
+    description: "StableHR is a cross-border automated payment system that allows efficient, low-cost, multi-currency transfers",
+    tech: ["Web3", "Ethereum", "Blockchain", "ETHGlobal"],
     image: "/assets/project-stablehr.png",
     slug: "stablehr-web3-app",
     link: "#",
