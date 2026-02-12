@@ -181,7 +181,7 @@ export default function HeroSection() {
               transition={{ delay: 1.0, duration: 0.5 }}
               className="hidden lg:flex absolute bottom-6 right-8 items-center gap-2 text-xs sm:text-sm text-muted-foreground font-mono pointer-events-none"
             >
-              <span>Scroll to explore</span>
+              <span>Scroll here to continue</span>
 
               <motion.span
                 animate={{ y: [0, 6, 0] }}
@@ -201,7 +201,7 @@ export default function HeroSection() {
             className="mt-4 sm:mt-6 lg:hidden"
           >
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              <span>Scroll to explore</span>
+              <span>Scroll here to continue</span>
               <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}

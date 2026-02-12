@@ -80,7 +80,7 @@ const projects = [
     title: "Onyx Home Robot Assistant",
     description: "SolidWorks competition runner-up, advanced home robotics design",
     tech: ["SolidWorks", "CAD", "Product Design"],
-    image: "/assets/onyx_proj.svg",
+    image: "/assets/onyx_proj.png",
     slug: "onyx-home-robot-assistant",
     link: "#",
   },

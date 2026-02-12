@@ -20,21 +20,23 @@ type ProjectLink = {
 
 type Project = {
   title: string;
-  description: string | string[]; // supports paragraph OR bullets
+  description: string | string[];
   tech: string[];
-  techIcons?: string[]; // svg paths in /public/assets/...
-  image?: string; // fallback
-  images?: string[]; // gallery
+  techIcons?: string[];
+
+  image?: string;      // fallback single image
+  images?: string[];   // gallery images
+
   slug: string;
 
-  // content
   myWork: string[];
   skills?: string;
 
-  // optional
   links?: ProjectLink[];
-  video?: string; // local mp4 in /public/assets/...
-  embedUrl?: string; // youtube/vimeo embed
+
+  // media
+  video?: string;      // local mp4 path, e.g. "/assets/videos/ugps.mp4"
+  embedUrl?: string;   // optional, but note: embeds cannot reliably autoplay/loop
 };
 
 type MediaItem =
@@ -46,18 +48,20 @@ const projects: Project[] = [
   {
     title: "Underground GPS (UGPS)",
     description:
-      "Developed a real-time 3D SLAM system with pose graph optimization and loop closure, integrated with a Gazebo digital twin to enable navigation in GNSS-denied mining environments using live-generated maps.",
+      "3D SLAM, pose graph optimization, Gazebo digital twin for GNSS-denied mining environments",
     tech: ["ROS2", "3D SLAM", "Sensor Fusion", "LiDAR"],
     techIcons: ["/assets/ros2_icon.svg", "/assets/gazebo_icon2.svg", "/assets/python_icon2.svg"],
-    images: ["/assets/project-ugps.png", "/assets/UGPS_proj.svg",],
+    image: "/assets/project-ugps.png",
+    // images: ["/assets/project-ugps.png", "/assets/project-ugps-2.png"],
+    // video: "/assets/videos/ugps.mp4",
     slug: "underground-gps-ugps",
     myWork: [
-      "Developed 3D SLAM Mapping with 3D Ouster LiDAR using ROS2.",
+      "Developed 3D SLAM mapping with 3D Ouster LiDAR using ROS2.",
       "Implemented pose graph optimization for improved localization accuracy.",
       "Achieved sensor fusion of 9-axis IMU with 3D LiDAR.",
       "Reduced safety risk probability for mining operators by 3x using UGPS navigation support.",
       "Simulated a digital twin of the environment using Gazebo.",
-      "Optimized 3D SLAM with pose-graph optimization, scan matching, and loop closure to achieve 95% mapping/localization accuracy in GNSS-denied tunnels.",
+      "Optimized 3D SLAM with pose-graph optimization, scan matching, and loop closure to achieve 95% mapping and localization accuracy in GNSS-denied tunnels.",
     ],
     skills: "ROS 2 • SLAM • Sensor Fusion • Gazebo Simulation • Python • C++",
     links: [
@@ -68,18 +72,17 @@ const projects: Project[] = [
       },
     ],
   },
+
   {
-    title: "Autonomous Track Measurement Unit (ATMU)",
-    description: "Autonomous track measurement unit for railway infrastructure using sensor fusion and data analytics to enable continuous infrastructure monitoring and predictive maintenance.",
+    title: "ATMU",
+    description: "Autonomous track measurement unit for railway infrastructure",
     tech: ["Autonomous Systems", "Sensor Fusion", "Predictive Maintenance", "Computer-aided Design (CAD)"],
-    techIcons: ["/assets/solidworks_icon.svg", "/assets/dassault_icon.svg"],
-    images: ["/assets/ATMU_proj.svg", "/assets/ATMU_proj2.png"],
+    techIcons: ["/assets/icons/sensors.svg", "/assets/icons/fusion.svg", "/assets/icons/robot.svg"],
+    image: "/assets/project-artu.png",
     slug: "atmu-track-measurement-unit",
     myWork: [
-      "Designed the overall assembly of the ATMU for testing, calibration, and data collection.",
+      "Designed the overall assembly of the ATMU.",
       "Innovated the attachment to the locomotive using a spring suspension system to reduce vibrations and oscillations.",
-      "Modular design allows for ease of swapping and troubleshooting.",
-      "Reduced manual labour hours by 68% as testing is done more efficiently with the ATMU.",
     ],
     skills: "Autonomous Systems • Sensor Fusion • CAD • Design for Manufacturing",
     links: [
@@ -90,6 +93,7 @@ const projects: Project[] = [
       },
     ],
   },
+
   {
     title: "KABAM Robotics AMRs",
     description: [
@@ -100,8 +104,9 @@ const projects: Project[] = [
     ],
     tech: ["CAD", "Design for Manufacturing", "Rapid Prototyping", "Robotics"],
     techIcons: ["/assets/icons/cad.svg", "/assets/icons/prototype.svg", "/assets/icons/robot.svg"],
-    image: "/assets/kabam_proj.svg",
-    // images: ["/assets/project-kabam-1.png", "/assets/project-kabam-2.png"],
+    image: "/assets/project-stablehr.png",
+    // images: ["/assets/project-stablehr.png", "/assets/project-kabam-2.png"],
+    // video: "/assets/videos/kabam.mp4",
     slug: "kabam-robotics-amrs",
     myWork: [
       "Built and deployed MVP AMRs with custom sensor mounts and payload integration.",
@@ -114,149 +119,118 @@ const projects: Project[] = [
       { label: "Pilot Project", href: "https://www.certisgroup.com/certis-robotic-solutions/", icon: "external" },
     ],
   },
+
   {
     title: "Soft Robotic Fish",
-    description: "Soft robotic fish with TPU soft actuator + YOLOv8 tracking for biomimetic underwater robotics",
+    description: "TPU soft actuator + YOLOv8 tracking for biomimetic underwater robotics",
     tech: ["Soft Robotics", "YOLOv8", "Computer Vision"],
-    techIcons: ["/assets/dassault_icon.svg", "/assets/cpp_icon.svg", "/assets/solidworks_icon.svg"],
-    images: ["/assets/fish_proj.png", "/assets/fish_proj2.png", "/assets/fish_proj3.png", "/assets/fish_proj4.png"],
+    techIcons: ["/assets/icons/softrobotics.svg", "/assets/icons/yolo.svg", "/assets/icons/vision.svg"],
+    image: "/assets/project-fish.png",
     slug: "soft-robotic-fish",
     myWork: [
-      "Created a soft robotic fish that can swim in water and turn left and right effectively.",
       "TPU soft actuator design for biomimetic swimming motion.",
-      "YOLOv8-based CV pose tracking for autonomous target navigation and control feedback.",
+      "YOLOv8-based tracking for experimental evaluation and control feedback.",
     ],
-    skills: "Soft Robotics • Computer Vision • Pose Tracking",
-    video: "/assets/soft_robotic_fish.mp4",
+    skills: "Soft Robotics • Vision • Tracking",
   },
+
   {
     title: "Agentic AI Newsletter Generator",
-    description: ["CrewAI agents, asynchronous pipelines for automated newsletter generation", 
-                  "Hierarchical Task Management: Structured task execution to utilise AI agents", 
-                  "Asynchronous Tasks: Improve performance by allowing tasks to run concurrently",
-                  "Callbacks: Enabling a reactive task flow",
-                  "Expected Outputs: Define the anticipated results for each task",],
+    description: "CrewAI agents, asynchronous pipelines for automated content generation",
     tech: ["CrewAI", "AI Agents", "Python", "Async"],
-    techIcons: ["/assets/python_icon2.svg", "/assets/openai_icon.svg", "/assets/ollama_icon.svg"],
-    image: "/assets/news_proj.png",
+    techIcons: ["/assets/icons/python.svg", "/assets/icons/agents.svg", "/assets/icons/async.svg"],
+    image: "/assets/project-ai-newsletter.png",
     slug: "agentic-ai-newsletter-generator",
     myWork: [
-      "Created Multi-agent pipeline design using CrewAI Agents and Ollama Local LLMs, showcasing advanced AI-powered automation through hierarchical, asynchronous tasks with callbacks and predefined expected outputs. ",
-      "It is designed to illustrate an enhanced workflow for building AI-driven newsletter automation tools.",
+      "Multi-agent pipeline design using CrewAI for topic→draft→review flows.",
+      "Asynchronous execution to improve throughput and automation.",
     ],
-    skills: "AI Agents • LLMs • Multi-agent Systems • Prompt Engineering • Python",
-    links: [
-      { label: "Github", href: "https://github.com/godheinstein/AI_newsletter", icon: "github" },
-    ],
+    skills: "Agents • Python • Async Pipelines",
   },
+
   {
     title: "Reinforcement Learning (Frozen Lake)",
-    description: ["Consider a frozen lake with holes covered by patches of very thin ice. Suppose that a robot is to glide on the frozen surface from one location(i.e., the top left corner) to another (bottom right corner) in order to pick up a frisbee.", 
-      "Implemented Q-learning, SARSA, Monte Carlo algorithm to solve the Frozen Lake problem."],
+    description: "Q-learning, SARSA, Monte Carlo algorithm implementations",
     tech: ["RL", "Q-Learning", "SARSA", "Python"],
-    techIcons: ["/assets/python_icon2.svg", "/assets/matplotlib_icon.svg", "/assets/numpy_icon.svg"],
-    image: "/assets/frozen_proj.png",
+    techIcons: ["/assets/icons/rl.svg", "/assets/icons/python.svg"],
+    image: "/assets/project-rl.png",
     slug: "reinforcement-learning-frozen-lake",
     myWork: [
-      "Implemented Q-learning, SARSA, and Monte Carlo methods from scratch, to solve the Frozen Lake problem.",
+      "Implemented Q-learning, SARSA, and Monte Carlo methods from scratch.",
       "Compared learning dynamics and stability across algorithms.",
-      "Expanded the problem to a 10x10 grid and tested the 3 RL algorithms",
-      "Tuned hyperparameters (ϵ epsilon, no. of episodes, etc.) "
     ],
-    skills: "Reinforcement Learning • Python • Matplotlib • NumPy • Data Structures & Algorithms • Object-Oriented Programming",
-    links: [
-      { label: "Github", href: "https://github.com/godheinstein/Frozen_lake_problem-Reinforcement_learning/tree/master", icon: "github" },
-    ],
+    skills: "RL • Python • Experimentation",
   },
+
   {
     title: "Autonomous Navigation ROS2",
-    description: "Built an autonomous navigation stack in ROS2 Nav2, A* path planning, Savitzky Golay smoothing, regulated pure pursuit control, to reliably traverse an obstacle maze.",
-    tech: ["ROS2", "Navigation", "Path Planning Algorithms", "Controls"],
-    techIcons: ["/assets/ros2_icon.svg", "/assets/gazebo_icon2.svg", "/assets/python_icon2.svg"],
-    image: "/assets/Nav_proj.svg",
+    description: "Regulated pure pursuit controller, Multi-cost Theta* pathfinding",
+    tech: ["ROS2", "Navigation", "Path Planning"],
+    techIcons: ["/assets/icons/ros2.svg", "/assets/icons/navigation.svg", "/assets/icons/planning.svg"],
+    image: "/assets/project-nav.png",
     slug: "autonomous-navigation-ros2",
     myWork: [
-      "Programmed the regulated pure pursuit controller with curvature heuristics, proximity heuristics and varying lookahead distances, for robust trajectory tracking.",
-      "Programmed the Multi-cost Theta* as the path planner algorithm to achieve the most efficient and optimal path.",
-      "Tuned and optimised parameters to achieve the best performance.",
+      "Regulated Pure Pursuit for robust trajectory tracking.",
+      "Multi-cost Theta* path planning for efficient navigation.",
     ],
-    skills: "ROS 2 • Path Planning Algorithms • Controls • Python • C++ • Gazebo Simulation",
-    links: [
-      { label: "Github", href: "https://github.com/godheinstein/Autonomous_Navigation_ROS2", icon: "github" },
-    ],
-    video: "/assets/EE4308_Team12_robot_demo.mp4",
+    skills: "ROS 2 • Planning • Controls",
   },
+
   {
     title: "Soft Robot Control with DRL",
-    description: ["Soft robots' compliant nature and non-linear dynamics make it difficult to model, control, and plan the trajectory of soft robots.", "Developed a deep reinforcement learning control framework for a tendon-driven soft robot, using A2C and PPO with LSTM actor–critic networks and imitation learning with decaying priors to learn tendon actuation policies for precise target-reaching despite nonlinear dynamics."],
-    tech: ["Deep Reinforcement Learning", "A2C", "PPO", "LSTM", "Imitation Learning"],
-    techIcons: ["/assets/tensorflow_icon.svg", "/assets/keras_icon.svg", "/assets/python_icon2.svg"],
-    images: ["/assets/drl_proj.png","/assets/drl_proj2.png","/assets/drl_proj3.png","/assets/drl_proj4.png","/assets/drl_proj5.png"],
+    description: "A2C, PPO with LSTM actor-critic networks for soft robotics",
+    tech: ["Deep RL", "A2C", "PPO", "LSTM"],
+    techIcons: ["/assets/icons/drl.svg", "/assets/icons/python.svg"],
+    image: "/assets/project-drl.png",
     slug: "soft-robot-control-drl",
     myWork: [
-      "Programmed 2 DRL algorithms to train the learning agent, Advantage Actor Critic (A2C) and Proximal Policy Optimisation (PPO)",
-      "Optimised the hyperparameters with the Bayesian Optimisation algorithm script",
-      "Designed an Actor-Critic neural network with LSTM and RNN using Tensorflow and Keras",
+      "Actor-critic DRL control using A2C and PPO.",
+      "LSTM policy networks for temporal dynamics in soft robotics.",
     ],
-    skills: "Deep Reinforcement Learning • Neural Networks • Imitation Learning • Imitation Learning • Python • Tensorflow • Keras",
-    video: "/assets/drl_video.mp4",
-    links: [
-      { label: "Github", href: "https://github.com/godheinstein/Soft_Robot_Control_Deep_Reinforcement_Learning/tree/master", icon: "github" },
-    ],
+    skills: "Deep RL • Neural Nets • Control",
   },
+
   {
     title: "Drone Kalman Filter",
-    description: ["This project simulates a drone's flight behavior and implements a simplified Kalman Filter for robust state estimation.",
-                  "The core objective is to accurately estimate the drone's position and velocity using various sensor data, enabling precise navigation and control in a simulated environment."      
-                ],
-    tech: ["Kalman Filter", "Sensor Fusion", "Drones", "Gazebo Simulations"],
-    techIcons: ["/assets/ros2_icon.svg", "/assets/gazebo_icon2.svg", "/assets/python_icon2.svg"],
-    image: "/assets/ekf_proj.svg",
+    description: "Fused IMU, sonar, GPS, barometer for robust state estimation",
+    tech: ["Kalman Filter", "Sensor Fusion", "Drones"],
+    techIcons: ["/assets/icons/kalman.svg", "/assets/icons/fusion.svg", "/assets/icons/drone.svg"],
+    image: "/assets/project-kalman.png",
     slug: "drone-kalman-filter",
     myWork: [
-      "Develop a behaviour node that includes automated takeoff, dynamic waypoint following, & controlled landing procedures.",
-      "Developed a simplified Kalman Filter to fuse sensor data from IMU, Sonar, GPS, Magnetic Sensor, & Barometer for accurate real-time estimation of drone’s pose and twist.",
-      "Implemented a custom controller to control the drone smoothly along planned trajectories.",
+      "Multi-sensor fusion (IMU, sonar, GPS, barometer) for robust estimation.",
+      "Filter tuning for stability and performance under noisy measurements.",
     ],
-    skills: "State Estimation • Sensor Fusion • ROS2 Programming • Python • C++ • Gazebo Simulation",
-    video: "/assets/ekf_demo.mp4",
-    links: [
-      { label: "Github", href: "https://github.com/godheinstein/Drone_Kalman_Filter", icon: "github" },
-    ],
+    skills: "State Estimation • Fusion • Robotics",
   },
+
   {
     title: "Onyx Home Robot Assistant",
-    description: "Onyx is an attachment on top of an existing roomba, and it serves as a robot assistant to move things around the house and help with daily household chores. ",
+    description: "SolidWorks competition runner-up, advanced home robotics design",
     tech: ["SolidWorks", "CAD", "Product Design"],
-    techIcons: ["/assets/solidworks_icon.svg", "/assets/dassault_icon.svg",],
-    images: ["/assets/onyx_proj.png","/assets/onyx_proj2.png",],
+    techIcons: ["/assets/icons/solidworks.svg", "/assets/icons/cad.svg", "/assets/icons/design.svg"],
+    image: "/assets/project-onyx.png",
     slug: "onyx-home-robot-assistant",
     myWork: [
-      "Achieved 1st Runner-up for Solidworks Design Competition organised by Dassault Systemes.",
-      "Innovated the idea of a home robot assistant to help with household chores.",
-      "Modular Design with attachment to existing robotic vacuums.",
+      "Competition runner-up design with focus on real home use-cases.",
+      "End-to-end CAD and product design workflow in SolidWorks.",
     ],
-    skills: "CAD • Product Design • Prototyping • Solidworks • Rapid Prototyping • Rendering",
+    skills: "CAD • Product Design • Prototyping",
   },
+
   {
     title: "StableHR",
     description:
       "StableHR is a cross-border automated payment system that allows efficient, low-cost, multi-currency transfers",
     tech: ["Web3", "Ethereum", "Blockchain", "React"],
-    techIcons: ["/assets/eth_icon.svg", "/assets/walletconnect_icon.svg", "/assets/1inch_icon.svg", "/assets/polygon_icon.svg", "/assets/XMTP_icon.svg","/assets/filecoin_icon.svg"],
-    image: "/assets/stable_proj.svg",
+    techIcons: ["/assets/icons/react.svg", "/assets/icons/ethereum.svg", "/assets/icons/web3.svg"],
+    image: "/assets/project-stablehr.png",
     slug: "stablehr-web3-app",
     myWork: [
-      "I participated ETHGlobal New York Hackathon where developers build innovative projects on Ethereum blockchain, fostering collaboration, learning, and pushing the boundaries of decentralized technology, web3 and crypto",
-      "WalletConnect and Web3Auth for wallet integration and account management.",
-      "1Inch for a comprehensive crypto quote and swap APIs",
-      "Unlimit’s Onramp SDK for users to convert fiat to crypto",
-      "Filecoin’s Web3Storage to store website assets",
-      "XMTP for integrated messaging protocol",
-      "Nouns artworks to beautify and add personality to the project",
-      "Polygon Mumbai testnet for application transactions",
+      "ETHGlobal project with wallet integration and decentralized storage.",
+      "Front-end built in React with Web3Storage integration.",
     ],
-    skills: "Web3 • Integrations",
+    skills: "React • Web3 • Integrations",
   },
 ];
 
@@ -390,7 +364,7 @@ export default function ProjectDetail() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="grid lg:grid-cols-2 gap-12 items-start"
+          className="grid lg:grid-cols-2 gap-10 items-start"
         >
           {/* Media (Video first, then images) */}
           <div className="mechanical-border bg-card/40 backdrop-blur-sm p-3">
@@ -557,16 +531,14 @@ export default function ProjectDetail() {
                 {project.techIcons.map((src) => (
                   <div
                     key={src}
-                    className="relative w-20 h-10 flex items-center justify-center
-                              rounded-lg bg-white/85
-                              border border-white/10
-                              hover:border-primary/40
-                              transition-all"
+                    className="relative w-12 h-10 sm:w-14 sm:h-11 flex items-center justify-center
+                               mechanical-border bg-white/10 backdrop-blur-md overflow-hidden rounded-lg"
                   >
+                    <div className="absolute inset-0 bg-white/10" />
                     <img
                       src={src}
                       alt=""
-                      className="relative w-20 h-10 sm:w-18 sm:h-8 object-contain opacity-100"
+                      className="relative w-7 h-7 sm:w-8 sm:h-8 object-contain opacity-95"
                       draggable={false}
                     />
                   </div>
