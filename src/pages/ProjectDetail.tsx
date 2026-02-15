@@ -184,7 +184,7 @@ const projects: Project[] = [
     links: [
       { label: "Github", href: "https://github.com/godheinstein/Autonomous_Navigation_ROS2", icon: "github" },
     ],
-    video: "/assets/EE4308_Team12_robot_demo.mp4",
+    video: "/assets/nav_demo.mp4",
   },
   {
     title: "Soft Robot Control with DRL",
