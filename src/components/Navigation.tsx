@@ -20,7 +20,9 @@ export default function Navigation() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      const sections = navItems.map((item) => document.getElementById(item.id));
+      const sections = navItems.map((item) =>
+        document.getElementById(item.id)
+      );
       const scrollPosition = window.scrollY + window.innerHeight / 3;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -81,14 +83,55 @@ export default function Navigation() {
             ZHA
           </motion.div>
 
-          {/* Desktop nav */}
+          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {navItems.map((item) => {
-              // ✅ Put ProjectsHoverMenu right here
               if (item.id === "projects") {
                 return (
-                  <div key="projects" className="relative">
-                    <ProjectsHoverMenu />
+                  <div key={item.id} className="relative">
+                    {/* Hover container controls dropdown */}
+                    <motion.div
+                      initial="closed"
+                      animate="closed"
+                      whileHover="open"
+                      className="relative"
+                    >
+                      <motion.button
+                        onClick={() => scrollToSection("projects")}
+                        className={`relative px-4 py-2 text-sm font-medium tracking-wider transition-colors ${
+                          activeSection === item.id
+                            ? "text-foreground"
+                            : "text-muted-foreground hover:text-foreground"
+                        }`}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        {item.label}
+                      </motion.button>
+
+                      {/* Invisible hover bridge to prevent flicker */}
+                      <div className="absolute left-0 top-full h-3 w-full" />
+
+                      {/* Dropdown */}
+                      <motion.div
+                        variants={{
+                          closed: {
+                            opacity: 0,
+                            y: 10,
+                            pointerEvents: "none",
+                          },
+                          open: {
+                            opacity: 1,
+                            y: 0,
+                            pointerEvents: "auto",
+                          },
+                        }}
+                        transition={{ duration: 0.18, ease: "easeOut" }}
+                        className="absolute left-0 top-[calc(100%+8px)] z-50"
+                      >
+                        <ProjectsHoverMenu />
+                      </motion.div>
+                    </motion.div>
                   </div>
                 );
               }
@@ -97,7 +140,7 @@ export default function Navigation() {
                 <motion.button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`relative px-3 py-2 text-sm font-medium tracking-wider transition-colors ${
+                  className={`relative px-4 py-2 text-sm font-medium tracking-wider transition-colors ${
                     activeSection === item.id
                       ? "text-foreground"
                       : "text-muted-foreground hover:text-foreground"
@@ -106,27 +149,23 @@ export default function Navigation() {
                   whileTap={{ scale: 0.95 }}
                 >
                   {item.label}
-                  {activeSection === item.id && (
-                    <motion.div
-                      layoutId="activeSection"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary glow-effect"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
                 </motion.button>
               );
             })}
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile Menu Button */}
           <button
             type="button"
             className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg mechanical-border bg-white/5 hover:bg-white/10 transition"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileOpen}
           >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileOpen ? (
+              <X className="w-5 h-5" />
+            ) : (
+              <Menu className="w-5 h-5" />
+            )}
           </button>
         </div>
       </div>
@@ -141,14 +180,14 @@ export default function Navigation() {
         />
       )}
 
-      {/* Mobile dropdown panel */}
+      {/* Mobile Dropdown */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.18, ease: "easeOut" }}
+            transition={{ duration: 0.2 }}
             className="md:hidden border-t border-border/30 bg-background/85 backdrop-blur-lg"
           >
             <div className="container mx-auto px-4 sm:px-6 py-4">
@@ -156,22 +195,22 @@ export default function Navigation() {
                 {navItems.map((item) => (
                   <button
                     key={item.id}
-                    type="button"
                     onClick={() => scrollToSection(item.id)}
-                    className={`text-left px-4 py-3 rounded-lg mechanical-border bg-white/5 hover:bg-white/10 transition
-                      ${
-                        activeSection === item.id
-                          ? "text-foreground"
-                          : "text-muted-foreground"
-                      }`}
+                    className={`text-left px-4 py-3 rounded-lg mechanical-border bg-white/5 hover:bg-white/10 transition ${
+                      activeSection === item.id
+                        ? "text-foreground"
+                        : "text-muted-foreground"
+                    }`}
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-medium tracking-wider">
                         {item.label}
                       </span>
-                      {activeSection === item.id ? (
-                        <span className="text-xs font-mono text-primary">ACTIVE</span>
-                      ) : null}
+                      {activeSection === item.id && (
+                        <span className="text-xs font-mono text-primary">
+                          ACTIVE
+                        </span>
+                      )}
                     </div>
                   </button>
                 ))}

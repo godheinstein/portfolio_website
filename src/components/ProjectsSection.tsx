@@ -152,7 +152,7 @@ export default function ProjectsSection() {
                 <div className="p-6 space-y-4">
                   <div>
                     <h3 className="text-xl font-bold">{project.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    <p className="mt-2 text-lg text-muted-foreground leading-relaxed">
                       {project.description}
                     </p>
                   </div>

@@ -61,7 +61,7 @@ export default function ContactSection() {
         >
           <h2 className="text-5xl font-bold mb-4 text-glow">Connect</h2>
           <div className="w-24 h-1 bg-primary mx-auto glow-effect" />
-          <p className="mt-6 text-muted-foreground">
+          <p className="mt-6 text-lg text-muted-foreground">
             Have a work opportunity or a project in mind?
             Reach out through any of the platforms below, and let's create something amazing together!
           </p>
@@ -93,7 +93,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="font-semibold">{link.name}</p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-lg text-muted-foreground">
                     {link.username}
                   </p>
                 </div>
@@ -111,7 +111,7 @@ export default function ContactSection() {
           >
             <div>
               <h3 className="text-2xl font-bold mb-4">Resume</h3>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-lg text-muted-foreground mb-6">
                 Download my full resume for detailed experience in robotics,
                 SLAM, AI systems, and mechanical design.
               </p>

@@ -527,7 +527,7 @@ export default function ProjectDetail() {
               <h1 className="text-4xl font-bold text-glow">{project.title}</h1>
 
               {Array.isArray(project.description) ? (
-                <ul className="mt-3 space-y-2 text-muted-foreground list-disc pl-5">
+                <ul className="text-lg mt-3 space-y-2 text-muted-foreground list-disc pl-5">
                   {project.description.map((item) => (
                     <li key={item} className="leading-relaxed">
                       {item}
@@ -535,7 +535,7 @@ export default function ProjectDetail() {
                   ))}
                 </ul>
               ) : (
-                <p className="mt-3 text-muted-foreground leading-relaxed">{project.description}</p>
+                <p className="text-lg mt-3 text-muted-foreground leading-relaxed">{project.description}</p>
               )}
             </div>
 
@@ -577,7 +577,7 @@ export default function ProjectDetail() {
             {/* My Work */}
             <div className="mechanical-border p-6 bg-card/30 backdrop-blur-sm">
               <h2 className="text-lg font-semibold mb-4">My Work</h2>
-              <ul className="space-y-2 text-muted-foreground list-disc pl-5">
+              <ul className="text-lg space-y-2 text-muted-foreground list-disc pl-5">
                 {project.myWork.map((h) => (
                   <li key={h}>{h}</li>
                 ))}
@@ -589,8 +589,8 @@ export default function ProjectDetail() {
             {/* Skills */}
             {project.skills ? (
               <div className="mechanical-border p-4 bg-card/20 backdrop-blur-sm">
-                <div className="text-xs font-mono text-muted-foreground">Skills</div>
-                <div className="mt-1 text-sm">{project.skills}</div>
+                <div className="text-lg font-bold mb-2">Skills</div>
+                <div className="mt-1 text-m">{project.skills}</div>
               </div>
             ) : null}
           </div>

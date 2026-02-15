@@ -157,7 +157,7 @@ export default function HeroSection() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.9 }}
-                className="absolute top-4 right-4 sm:top-8 sm:right-8 text-[10px] sm:text-xs font-mono text-muted-foreground space-y-1 pointer-events-none"
+                className="absolute top-4 right-4 sm:top-8 sm:right-8 text-[10px] sm:text-sm font-mono text-muted-foreground space-y-1 pointer-events-none"
               >
                 <div className="flex items-center gap-2">
                   <div className="w-1 h-1 bg-primary" />

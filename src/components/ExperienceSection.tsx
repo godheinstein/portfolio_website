@@ -128,7 +128,7 @@ export default function ExperienceSection() {
                         className="flex items-start gap-3 group"
                       >
                         <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 group-hover:scale-150 transition-transform" />
-                        <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+                        <p className="text-lg text-muted-foreground group-hover:text-foreground transition-colors">
                           {highlight}
                         </p>
                       </motion.div>

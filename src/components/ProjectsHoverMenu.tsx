@@ -1,84 +1,69 @@
-import { useEffect, useRef, useState } from "react";
-import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { projectIndex } from "../data/projects";
-import { ChevronDown } from "lucide-react";
+import { Link } from "wouter";
+import { ExternalLink } from "lucide-react";
 
-export default function ProjectsHoverMenu() {
-  const [open, setOpen] = useState(false);
-  const rootRef = useRef<HTMLDivElement>(null);
+type ProjectsHoverMenuProps = {
+  mobile?: boolean;
+};
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, []);
+const projects = [
+  { title: "Underground GPS (UGPS)", slug: "underground-gps-ugps" },
+  { title: "ATMU", slug: "atmu-track-measurement-unit" },
+  { title: "KABAM Robotics AMRs", slug: "kabam-robotics-amrs" },
+  { title: "Soft Robotic Fish", slug: "soft-robotic-fish" },
+  { title: "Agentic AI Newsletter Generator", slug: "agentic-ai-newsletter-generator" },
+  { title: "Reinforcement Learning (Frozen Lake)", slug: "reinforcement-learning-frozen-lake" },
+  { title: "Autonomous Navigation ROS2", slug: "autonomous-navigation-ros2" },
+  { title: "Soft Robot Control with DRL", slug: "soft-robot-control-drl" },
+  { title: "Drone Kalman Filter", slug: "drone-kalman-filter" },
+  { title: "Onyx Home Robot Assistant", slug: "onyx-home-robot-assistant" },
+  { title: "StableHR", slug: "stablehr-web3-app" },
+];
 
-  // close if click outside
-  useEffect(() => {
-    const onDown = (e: MouseEvent) => {
-      if (!rootRef.current) return;
-      if (!rootRef.current.contains(e.target as Node)) setOpen(false);
-    };
-    window.addEventListener("mousedown", onDown);
-    return () => window.removeEventListener("mousedown", onDown);
-  }, []);
+export default function ProjectsHoverMenu({ mobile = false }: ProjectsHoverMenuProps) {
+  if (mobile) {
+    return (
+      <div className="space-y-2">
+        {projects.map((p) => (
+          <Link key={p.slug} href={`/projects/${p.slug}`}>
+            <a className="flex items-center justify-between px-4 py-3 rounded-lg mechanical-border bg-white/5 hover:bg-white/10 transition">
+              <span className="text-sm text-muted-foreground hover:text-foreground">
+                {p.title}
+              </span>
+              <ExternalLink className="w-4 h-4 text-primary/70" />
+            </a>
+          </Link>
+        ))}
+      </div>
+    );
+  }
 
   return (
-    <div
-      ref={rootRef}
-      className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
-      <button
-        type="button"
-        aria-haspopup="menu"
-        aria-expanded={open}
-        className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0, y: 8, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 8, scale: 0.98 }}
+        transition={{ duration: 0.16, ease: "easeOut" }}
+        className="w-80 mechanical-border bg-background/90 backdrop-blur-lg p-3 rounded-xl shadow-lg"
       >
-        Projects
-        <ChevronDown className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
-      </button>
+        <div className="text-xs font-mono text-muted-foreground px-2 pb-2">
+          Projects
+        </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: 10, filter: "blur(6px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: 10, filter: "blur(6px)" }}
-            transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute left-1/2 top-[calc(100%+10px)] -translate-x-1/2 z-50"
-          >
-            <div className="mechanical-border bg-background/80 backdrop-blur-xl p-3 rounded-xl w-[min(520px,92vw)]">
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-primary/30 via-primary/10 to-transparent" />
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
-                {projectIndex.map((p) => (
-                  <Link
-                    key={p.slug}
-                    href={`/projects/${p.slug}`}
-                    className="group flex items-center justify-between gap-3 px-3 py-2 rounded-lg
-                               text-sm text-muted-foreground hover:text-foreground
-                               hover:bg-white/5 transition"
-                    onClick={() => setOpen(false)}
-                  >
-                    <span className="truncate">{p.title}</span>
-                    <span className="text-[11px] font-mono text-primary/80 opacity-10 group-hover:opacity-100 transition-opacity">
-                      View
-                    </span>
-                  </Link>
-                ))}
-              </div>
-
-              <div className="mt-2 text-[11px] font-mono text-muted-foreground px-1">
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+        <div className="flex flex-col">
+          {projects.map((p) => (
+            <Link key={p.slug} href={`/projects/${p.slug}`}>
+              <a className="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white/5 transition">
+                <span className="text-sm text-muted-foreground hover:text-foreground">
+                  {p.title}
+                </span>
+                <ExternalLink className="w-4 h-4 text-primary/70" />
+              </a>
+            </Link>
+          ))}
+        </div>
+      </motion.div>
+    </AnimatePresence>
   );
 }

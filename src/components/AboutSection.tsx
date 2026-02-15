@@ -69,17 +69,17 @@ export default function AboutSection() {
           >
             {/* Biography */}
             <div className="mechanical-border p-6 bg-card/30 backdrop-blur-sm space-y-4 w-full max-w-xl mx-auto">
-              <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+              <p className="text-base sm:text-xl leading-relaxed text-muted-foreground">
                 I am a <span className="text-foreground font-semibold">Robotics Engineer</span> with 
                 expertise spanning mechanical design, autonomous systems, and AI integration. My work 
                 bridges the gap between theoretical robotics and real-world applications.
               </p>
-              <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+              <p className="text-base sm:text-xl leading-relaxed text-muted-foreground">
                 With experience at leading companies like <span className="text-foreground font-semibold">Dyson</span>, 
                 I've developed cutting-edge solutions in <span className="text-foreground font-semibold">3D SLAM</span>, 
                 sensor fusion, and autonomous navigation systems that operate in challenging environments.
               </p>
-              <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+              <p className="text-base sm:text-xl leading-relaxed text-muted-foreground">
                 I combine <span className="text-foreground font-semibold">CAD engineering precision</span> with 
                 advanced software development to create robust, scalable robotic systems that push the boundaries 
                 of what's possible in automation and AI.
@@ -139,7 +139,7 @@ export default function AboutSection() {
 
                     
                     {/* Name */}
-                    <span className="text-sm sm:text-base font-semibold text-center text-foreground/100">{skill.name}</span>
+                    <span className="text-lg sm:text-base font-semibold text-center text-foreground/100">{skill.name}</span>
 
                     {/* Hover overlay */}
                     <motion.div
