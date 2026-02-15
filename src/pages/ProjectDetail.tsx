@@ -99,7 +99,7 @@ const projects: Project[] = [
       "24/7 Real-time Security Surveillance",
     ],
     tech: ["CAD", "Design for Manufacturing", "Rapid Prototyping", "Robotics"],
-    techIcons: ["/assets/icons/solidworks_icon.svg", "/assets/icons/dassault_icon.svg", "/assets/icons/ros2_icon.svg"],
+    techIcons: ["/assets/solidworks_icon.svg", "/assets/dassault_icon.svg", "/assets/ros2_icon.svg"],
     image: "/assets/kabam_proj.svg",
     // images: ["/assets/project-kabam-1.png", "/assets/project-kabam-2.png"],
     slug: "kabam-robotics-amrs",
