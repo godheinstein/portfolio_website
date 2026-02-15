@@ -129,7 +129,7 @@ export default function ContactSection() {
         </div>
 
         <div className="mt-20 pt-8 border-t border-border/30 text-center text-sm text-muted-foreground">
-          © 2024 Zaw Hein Aung. Built with robotics and engineering precision.
+          © 2024 Zaw Hein Aung. Built with a passion for robotics and engineering.
         </div>
       </div>
     </section>
