@@ -8,7 +8,7 @@ type ProjectsHoverMenuProps = {
 
 const projects = [
   { title: "Underground GPS (UGPS)", slug: "underground-gps-ugps" },
-  { title: "ATMU", slug: "atmu-track-measurement-unit" },
+  { title: "Autonomous Track Measurement Unit (ATMU)", slug: "atmu-track-measurement-unit" },
   { title: "KABAM Robotics AMRs", slug: "kabam-robotics-amrs" },
   { title: "Soft Robotic Fish", slug: "soft-robotic-fish" },
   { title: "Agentic AI Newsletter Generator", slug: "agentic-ai-newsletter-generator" },
